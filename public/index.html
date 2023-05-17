@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index Page</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">ACB File Hosting</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="./view">
+                        View Files</a></li>
+                    <li><a href="./login" onclick="localStorage.clear();" id="logout-btn">
+                            Logout</a></li>
+                            
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <h1 class="text-center">Upload Files</h1>
+                <form id="file-upload-form">
+                    <div class="form-group">
+                        <label for="file-input">Select files:</label>
+                        <input type="file" id="file-input" name="files[]" accept="image/*,video/mp4,audio/*" multiple>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" id="s_btn" class="btn btn-primary btn-block">Upload</button>
+                    </div>
+                    <div id="infobar" hidden>
+                        <span id="infobar_1">0</span>/<span id="infobar_2">3</span> Uploaded.
+                    </div>
+                    <button type="button" id="v_btn" style="color: black;visibility: hidden;" class="btn btn-dark btn-block"><a href="./view">View Files</a></button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Custom JS -->
+
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-storage.js"></script>
+
+    <!-- Initialize Firebase with your app's configuration object -->
+    <script>
+        if (!localStorage.getItem('login')) {
+        window.location.replace('./login.html');
+      }
+        const firebaseConfig = {
+            apiKey: "AIzaSyB9sBVMG0hNKoWxLi76NJEAbFjHx0K8tPI",
+            authDomain: "chatgptworks0.firebaseapp.com",
+            projectId: "chatgptworks0",
+            storageBucket: "chatgptworks0.appspot.com",
+            messagingSenderId: "113963747140",
+            appId: "1:113963747140:web:4545f53dca723e4f51b911",
+            measurementId: "G-RY1623BJFV"
+        };
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>
